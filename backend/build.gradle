@@ -1,0 +1,37 @@
+plugins {
+    id 'java'
+    id 'scala'
+    id "org.springframework.boot" version "2.4.2"
+    id "io.spring.dependency-management" version "1.0.11.RELEASE"
+}
+
+version '0.1.0-alpha1'
+
+configurations.compile {
+    exclude group: 'org.springframework.boot', module: 'spring-boot-starter-logging'
+}
+
+dependencies {
+    //Scala standard library
+    compile group: 'org.scala-lang', name: 'scala-library', version: '2.13.4'
+
+    //Spring Boot
+    compile group: 'org.springframework.boot', name: 'spring-boot-devtools'
+
+    //Spring Boot Starter
+    compile group: 'org.springframework.boot', name: 'spring-boot-starter-data-jpa'
+    compile group: 'org.springframework.boot', name: 'spring-boot-starter-log4j2'
+    compile group: 'org.springframework.boot', name: 'spring-boot-starter-security'
+    compile group: 'org.springframework.boot', name: 'spring-boot-starter-web'
+
+    //Database Drivers
+    compile group: 'org.mariadb.jdbc', name: 'mariadb-java-client', version: '2.7.2'
+    compile group: 'com.h2database', name: 'h2', version: '1.4.200'
+
+    //Spring Boot Test
+    testCompile group: 'org.springframework.boot', name: 'spring-boot-starter-test'
+}
+
+bootRun {
+    main 'cactus.CactusApplication'
+}
